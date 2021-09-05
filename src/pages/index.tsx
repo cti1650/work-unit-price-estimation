@@ -24,8 +24,8 @@ const Home = () => {
   return (
     <div className='container max-w-screen-md mx-auto text-sans'>
       <Head>
-        <title>Tailwind CC</title>
-        <meta property='og:title' content='Tailwind CC' />
+        <title>Work Unit Price Estimation</title>
+        <meta property='og:title' content='Work Unit Price Estimation' />
       </Head>
 
       <div className='w-full text-gray-900 p-4'>

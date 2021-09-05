@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Head from 'next/head';
 import {
   SampleBox,
@@ -16,10 +16,10 @@ import { SampleFlexBoxs } from '@comp/parts/sample';
 import Root from '@comp/parts/Root';
 
 const Home = () => {
-  const [comment, setComment] = useState('');
-  const handleCopy = (text) => {
-    setComment(text);
-  };
+  const [base, setBase] = useState(1000);
+  const handleChangeBase = useCallback((e) => {
+    setBase(e.target.value);
+  }, [base]);
   const links = LinkData();
   return (
     <div className='container max-w-screen-md mx-auto text-sans'>
@@ -30,9 +30,13 @@ const Home = () => {
 
       <div className='w-full text-gray-900 p-4'>
         <div>
-          <div className='sticky text-lg font-bold pt-4'>Box Layout</div>
+          <div className='sticky text-lg font-bold pt-4'>Work List</div>
           <div className='flex flex-row flex-wrap justify-center items-center'>
-            <Root />
+            <Root basePrice={base} onChange={(val) => { console.log(val) }} />
+          </div>
+          <div className='sticky text-lg font-bold pt-4'>Base Price</div>
+          <div className='flex flex-row flex-wrap justify-center items-center'>
+            <input type='number' className="input input-sm input-bordered w-full" placeholder='basePrice' value={base} onChange={handleChangeBase} />
           </div>
         </div>
       </div>
